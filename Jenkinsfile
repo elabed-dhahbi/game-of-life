@@ -5,7 +5,7 @@ pipeline {
     stages {
         stage('Clone Repository') {
             steps {
-                git branch: 'sprint1_develop',url: 'https//github.com/elabed-dhahbi/game-of-life.git'
+                git branch: 'sprint1_develop',url: 'https://github.com/elabed-dhahbi/game-of-life.git'
             }
         }
         stage('Build with Maven') {
