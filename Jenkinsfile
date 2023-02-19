@@ -2,23 +2,31 @@ pipeline {
     agent {
         label 'jdk11'
     }
+
     stages {
-        stage('Clone Repository') {
+        stage('Checkout') {
             steps {
-                git branch: 'sprint1_develop',url: 'https://github.com/elabed-dhahbi/game-of-life.git'
+                git branch: 'sprint1_develop', url: 'https://github.com/elabed-dhahbi/game-of-life.git'
             }
         }
-        stage('Build with Maven') {
+
+        stage('Build') {
             steps {
                 sh 'mvn clean package'
             }
         }
-        stage('Run JUnit Tests') {
+
+        stage('Test') {
             steps {
-                junit '**/surefire-reports/*.xml'
-		archiveArtifacts artifacts: '**/*.war', followSymlinks: false
+                sh 'mvn test'
+                archive 'target/surefire-reports'
             }
         }
     }
-}
 
+    post {
+        failure {
+            mail to: 'abeddahbi2s@gmail.com', subject: 'Build failed', body: "The build of ${env.JOB_NAME} on ${env.NODE_NAME} has failed. Please check the console output: ${env.BUILD_URL}"
+        }
+    }
+}
