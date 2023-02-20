@@ -3,6 +3,10 @@ pipeline {
         label 'jdk11'
     }
 
+    parameters {
+        choice(name: 'GOAL', choices: ['dev', 'test', 'prod'], description: 'Select the environment to deploy to.')
+    }
+
     stages {
         stage('Checkout') {
             steps {
@@ -22,6 +26,12 @@ pipeline {
                 archive 'target/surefire-reports'
             }
         }
+
+        stage('Deploy') {
+            steps {
+                sh "echo Deploying to ${params.ENVIRONMENT}"
+            }
+        }
     }
 
     post {
@@ -30,3 +40,4 @@ pipeline {
         }
     }
 }
+
