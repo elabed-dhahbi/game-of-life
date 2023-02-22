@@ -126,7 +126,7 @@
                     <storyType>html</storyType>
                     <storyReport>target/easyb/easyb.html</storyReport>
                     <easybTestDirectory>src/test/stories</easybTestDirectory>
-                    <jvmArguments>-Xmx512m -Dwebdriver.driver=${webdriver.driver}</jvmArguments>
+                    <jvmArguments>-Xmx1024m -Dwebdriver.driver=${webdriver.driver}</jvmArguments>
                 </configuration>
             </plugin>
 
