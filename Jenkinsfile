@@ -28,10 +28,11 @@ pipeline {
         }
 
         stage('Deploy') {
-            steps {
-                sh "echo Deploying to ${params.ENVIRONMENT}"
-            }
-        }
+          steps {
+                sh "echo Deploying to ${params.GOAL}"
+    }
+}
+
     }
 
     post {
