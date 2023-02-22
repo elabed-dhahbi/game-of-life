@@ -14,7 +14,7 @@ pipeline {
             }
         }
 
-        stage('Build the Code and sonar cube Analysis') {
+        stage('Build the Code and SonarQube Analysis') {
             steps {
                 sh 'mvn clean package sonar:sonar'
             }
@@ -28,11 +28,10 @@ pipeline {
         }
 
         stage('Deploy') {
-          steps {
+            steps {
                 sh "echo Deploying to ${params.GOAL}"
-    }
-}
-
+            }
+        }
     }
 
     post {
@@ -41,4 +40,3 @@ pipeline {
         }
     }
 }
-
