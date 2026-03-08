@@ -3,7 +3,7 @@ pipeline {
      stages {
        stage ('SourceCode') {
           steps {
-             git branh: 'sprint1_develop', url 'https://github.com/elabed-dhahbi/game-of-life.git'
+             git branch: 'sprint1_develop', url 'https://github.com/elabed-dhahbi/game-of-life.git'
           }
        }
        stage('Build the code') {
